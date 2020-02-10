@@ -24,7 +24,7 @@ RUN mkdir -p /cli/.akamai-cli && \
     echo "last-ping             = 2018-04-27T18:16:12Z" >> /cli/.akamai-cli/config && \
     echo "client-id             =" >> /cli/.akamai-cli/config && \
     echo "install-in-path       =" >> /cli/.akamai-cli/config && \
-    echo "last-upgrade-check    = ignore" >> /cli/.akamai-cli/config
+    echo "last-upgrade-check    = force" >> /cli/.akamai-cli/config
 
 RUN akamai install https://github.com/apiheat/akamai-cli-netlist --force && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-netlist/.git
@@ -47,9 +47,6 @@ RUN echo '                                                               ' >  /e
     echo "   * $(akamai --version)"                                  >> /etc/motd && \
     echo '===============================================================' >> /etc/motd
 
-
-
-ENV AKAMAI_CLI_HOME=/cli
 VOLUME /cli
 VOLUME /root/.edgerc
 
